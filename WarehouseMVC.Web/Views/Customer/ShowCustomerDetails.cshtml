@@ -1,0 +1,54 @@
+@model WarehouseMVC.Application.ViewModels.Customer.CustomerDetailsVm
+
+@{
+    ViewBag.Title = "Customer Details";
+    Layout = "_Layout";
+}
+<div>
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(Model => Model.Id)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(Model => Model.Id)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(Model => Model.Name)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(Model => Model.Name)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(Model => Model.NIP)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(Model => Model.NIP)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(Model => Model.Regon)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(Model => Model.Regon)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(Model => Model.CEOFullName)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(Model => Model.CEOFullName)
+    </dd>
+    @foreach (var modelItem in Model.Addresses)
+    {
+        var addres = $"{modelItem.Address} {modelItem.ZipCode} {modelItem.City} {modelItem.Country}";
+
+        <dt class="col-sm-2">
+            Address
+        </dt>
+        <dd class="col-sm-10">
+            @addres
+        </dd>
+    }
+</dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,66 @@
+@model DatePrinter.Web.Models.Classes.MyViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<form id="product" asp-action="Index" asp-controller="Home" method="Post">
+    <div class="row">
+        @foreach (var category in Model.CategoryData)
+        {
+            <div>
+                @Html.ActionLink(category.Category, "Index", new { categoryId = category.CategoryId })
+            </div>
+        }
+    </div>
+</form>
+
+
+<form id="product" asp-action="Details" asp-controller="Home" method="Post">
+    <div class="row">
+        <table class="table" style="font-size: 25px; text-align: center">
+            <thead>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @for (var i = 0; i < Model.ModelData.Length; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(Model.ModelData[i].Name, "Details", new { id = Model.ModelData[i].Id })
+                        </td>
+                        @if (i + 1 < Model.ModelData.Length)
+                        {
+                            <td>
+                                @Html.ActionLink(Model.ModelData[i + 1].Name, "Details", new { id = Model.ModelData[i + 1].Id })
+                            </td>
+                        }
+                    </tr>
+
+                    @* <tr> *@
+                    @*     <td> *@
+                    @*         <div style="border: 1px solid black; padding-right: 5px;"> *@
+                    @*             @Html.ActionLink(@Model.ModelData[i].Name, "Details", new { id = Model.ModelData[i].Id }) *@
+                    @*         </div> *@
+                    @*     </td> *@
+                    @*     @if (i + 1 < Model.ModelData.Length) *@
+                    @*     { *@
+                    @*         <td> *@
+                    @*             <div style="border: 1px solid black; padding-left: 5px;"> *@
+                    @*                 @Html.ActionLink(@Model.ModelData[i + 1].Name, "Details", new { id = Model.ModelData[i + 1].Id }) *@
+                    @*             </div> *@
+                    @*         </td> *@
+                    @*     } *@
+                    @* </tr> *@
+                }
+            }
+            </tbody>
+        </table>
+
+    </div>
+</form>
